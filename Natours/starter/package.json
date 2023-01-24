@@ -1,0 +1,15 @@
+{
+  "name": "natours-starter",
+  "version": "1.0.0",
+  "description": "A landing page for natours",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "Mustafa",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^8.0.0"
+  }
+}
