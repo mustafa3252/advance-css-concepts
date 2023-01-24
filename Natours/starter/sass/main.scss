@@ -1,24 +1,22 @@
-/*
-COLORS:
+@import "pages/home";
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
+@import "abstracts/variables";
+@import "abstracts/mixins";
+@import "abstracts/functions";
 
-*/
 
-$color-primary: #55c57a;
-$color-primary-dark: #28b485;
-$color-primary-light: #7ed56f;
+@import "base/base";
+@import "base/typography";
+@import "base/animations";
+@import "base/utilities";
 
-$color-grey-dark: #777;
 
 *,
 *::before,
 *::after{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 html{
@@ -39,7 +37,7 @@ body{
     background-image: linear-gradient(
         to right bottom, 
         rgba($color-primary-light, 0.8), 
-        rgba($color-primary-dark, 0.8), )
+        rgba($color-primary-dark, 0.8), ),
         url(../img/hero.jpg); 
     background-size: cover;
     background-position: top;
@@ -49,53 +47,58 @@ body{
         /* start from top right, go clockwise, 
         if you want image to cover entire x or y co-ordinate use 100 percent, 
         if x and y does not move relative to the top right point, use 0 percent */
+
+        &__logo-box{
+            position: absolute;
+            top: 4rem;
+            left: 4rem;
+        }
+        
+        &__logo{
+            height: 3.5rem;
+        }
+        
+        &__logo-box:hover .logo{
+            animation: moveInRight 3s ease-out;
+        }
+        
+        &__text-box{
+            position: absolute;
+            top: 40%;
+            left: 50.5%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
     
 }
 
-.header__logo-box{
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
 
-.header__logo{
-    height: 3.5rem;
-}
-
-.header__logo-box:hover .logo{
-    animation: moveInRight 3s ease-out;
-}
-
-.header__text-box{
-    position: absolute;
-    top: 40%;
-    left: 50.5%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
 
 .heading-primary{
-    color: #fff;
+    color: $color-white;
     text-transform: uppercase;
     backface-visibility: hidden;
     margin-bottom: 5rem;
+
+    &--main{
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        animation: moveInLeft 1s ease-out;
+    }
+    
+    &--sub{
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+        animation: moveInRight 1s  ease-out;
+    }
+
 }
 
-.heading-primary--main{
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation: moveInLeft 1s ease-out;
-}
 
-.heading-primary--sub{
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    animation: moveInRight 1s  ease-out;
-}
 
 @keyframes moveInLeft{
     0%{
@@ -141,8 +144,12 @@ body{
        
    }
 
-.btn:link, 
-.btn:visited{
+
+
+.btn{
+
+    &:link, 
+    &:visited{
     text-transform: uppercase;
     text-decoration: none;
     display: inline-block;
@@ -151,50 +158,59 @@ body{
     transition: all 0.2s;
     position: relative;
     font-size: 1.6rem;
+    }
+
+    &:hover{
+        transform: translateY(-0.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black,0.2);
+
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    
+    &:active{
+        transform: translateY(-0.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black,0.2);
+    }
+    
+    
+    &--white{
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after{
+            background-color: $color-white;
+        }
+    }
+    
+    &::after{
+        content: '';
+        display: inline-block;
+        position: absolute; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 3rem;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+    
+    
+    &--animated{
+        animation: moveInBottom 1s ease-out 0.5s;
+        animation-fill-mode: backwards; /*sets inital state to 0%*/
+    }
+    
+// For the after pseuedo element, all the properties of the button need to be defiedn again for the after element with rules::after, eg: btn--white::after and btn:hover::after
+
+//the animation calls is for button directly, not for the after element
+
+//the animations in all the after elements, derive traition properties from the after element, not the main btn element
+
+
 }
 
-
-
-.btn:hover{
-    transform: translateY(-0.3rem);
-    box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
-}
-
-.btn:active{
-    transform: translateY(-0.1rem);
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,0.2);
-}
-
-
-.btn--white{
-    background-color: #fff;
-    color: $color-grey-dark
-}
-
-.btn::after{
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 3rem;
-    z-index: -1;
-    transition: all 0.4s;
-}
-
-.btn--white::after{
-    background-color: #fff;
-}
-
-.btn:hover::after{
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
-
-.btn--animated{
-    animation: moveInBottom 1s ease-out 0.5s;
-    animation-fill-mode: backwards; /*sets inital state to 0%*/
-}
 
