@@ -32,11 +32,39 @@ body{
 
 //GRID-ROW
 
-.row{
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
 
+.heading-secondary{
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block; 
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    -webkit-background-clip: text;
+    color:transparent;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    transition: all .2s;
+
+    &:hover{
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        text-shadow: .5rem 1rem 2rem rgba($color-black,0.2);
+    }
 }
 
+.heading-tertiary {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+
+.paragraph{
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+
+    &:not(:last-child){
+        margin-bottom: 2rem;
+    }
+
+}

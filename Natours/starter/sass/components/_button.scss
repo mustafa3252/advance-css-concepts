@@ -9,7 +9,7 @@
     border-radius: 3rem;
     transition: all 0.2s;
     position: relative;
-    font-size: 1.6rem;
+    font-size: $default-font-size;
     }
 
     &:hover{
@@ -62,5 +62,31 @@
 
 //the animations in all the after elements, derive traition properties from the after element, not the main btn element
 
+
+}
+
+.btn-text{
+    &:link,
+    &:visited{
+        display: inline-block;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: $default-font-size;
+        border-bottom: 0.1rem solid $color-primary;
+        padding: 0.3rem;
+        color: $color-primary;
+        transition: all 0.2s;
+    }
+    
+    &:hover{
+        color: $color-white;
+        background-color: $color-primary;
+        transform: translateY(-0.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black,0.15);
+    }
+
+    &:active{
+        transform: translateY(0.1rem);
+    }
 
 }
