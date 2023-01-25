@@ -9,6 +9,7 @@
     background-position: top;
     position: relative;
     /* bacface used to remove the junkiness during animation*/
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); 
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); 
         /* start from top right, go clockwise, 
         if you want image to cover entire x or y co-ordinate use 100 percent, 
